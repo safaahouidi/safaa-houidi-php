@@ -87,53 +87,161 @@
                         <div class="form">
                             <div class="username">
                                 <label>username :</label>
-                                <input type="text" name="username" id="username" required placeholder="Full name">
+                                <input type="text" name="" id="username" placeholder="Full name">
+                                <div id="usernameerror" style="display: inline-block;"></div>
                             </div>
-                            <div class="password">
+                            <div class="email">
                                 <label>E-mail :</label>
-                                <input type="email" name="email" id="email" placeholder="someone@gmail.com">
+                                <input type="email" name="" id="email" placeholder="someone@gmail.com">
+                                <div id="emailerror" style="display: inline-block;"></div>
                             </div>
                             <div class="phonenumber">
                                 <label>phone :</label>
-                                <input type="tel" name="telephone" id="" placeholder="123456789">
+                                <input type="tel" name="" id="phone" placeholder="123456789">
+                                <div id="phoneerror" style="display: inline-block;"></div>
                             </div>
                             <div class="gender">
                                 <label>Gender:</label>
-                                <input type="radio" name="" id="">Male
-                                <input type="radio" name="" id="">Female
+                                <input type="radio" name="" id="radio1">Male
+                                <input type="radio" name="" id="radio2">Female
+                                <div id="radioerror" "></div>
                             </div>
-                            <div class="numbersroom">
-                                <label for="">select numbers of rooms :</label>
-                                <select name="numbersroom" id="">
-                                    <option value="1" active>1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                </select>
+                            <div class=" numbersroom">
+                                    <label for="">select numbers of rooms :</label>
+                                    <select name="numbersroom" id="">
+                                        <option id="numberroom1" value="1" active>..</option>
+                                        <option id="n2" value="2">1</option>
+                                        <option id="n3" value="3">2</option>
+                                        <option id="n4" value="4">3</option>
+                                    </select>
+                                    <div id="numberroomerror"></div>
+                                </div>
+                                <div class="room type">
+                                    <label for="">select room type :</label>
+                                    <select name="numbersroom" id="">
+                                        <option id="roomtype1" active>..</option>
+                                        <option value="single room">single room</option>
+                                        <option value="double room">Double room</option>
+                                    </select>
+                                    <div id="roomtypeerror"></div>
+                                </div>
+                                <div class="payment">
+                                    <label for="">select type payment :</label>
+                                    <select name="payment" id="">
+                                        <option id="payment1" active>..</option>
+                                        <option value="visa-card">visa-card</option>
+                                        <option value="cash">cash</option>
+                                    </select>
+                                    <div id="paymenterror"></div>
+                                </div>
+                                <div class="columns">
+                                    <div class="column"><button type="submit" id="submit"
+                                            onclick="submit()">submit</button></div>
+                                    <div class="column"><button type="reset" id="cancel"
+                                            onclick="cancel()">cancel</button></div>
+                                </div>
                             </div>
-                            <div class="room type">
-                                <label for="">select room type :</label>
-                                <select name="numbersroom" id="">
-                                    <option value="single room" active>single room</option>
-                                    <option value="double room">Double room</option>
-                                </select>
-                            </div>
-                            <div class="payment">
-                                <label for="">select type payment :</label>
-                                <select name="payment" id="">
-                                    <option value="visa-card" active>visa-card</option>
-                                    <option value="cash">cash</option>
-                                </select>
-                            </div>
-                            <button type="submit">submit</button>
-                        </div>
                 </section>
         </div>
         <section id="footer">
             <div class="footer">Copy Write &copy; 2024</div>
         </section>
     </section>
+    <script>
+        function cancel() {
+            location.reload()
+        }
+        function toggle() {
+            var toggle = false;
+        }
+        function submit() {
+            toggle != toggle;
+
+            var Name = document.getElementById("username").value;
+            var Email = document.getElementById("email").value;
+            var Phone = document.getElementById("phone").value;
+            var Radio1 = document.getElementById("radio1").checked;
+            var Radio2 = document.getElementById("radio2").checked;
+            var Numberroom = document.getElementById("numberroom1").selected;
+            var roomtype = document.getElementById("roomtype1").selected;
+            var payment = document.getElementById("payment1").selected;
+
+            if (toggle != false) {
+                if (Name != '' && Email != '' && Phone != '' && Radio1 == true || Radio2 == true && Numberroom != true && roomtype != true && payment != true) {
+                    alert("تم ارسال الطلب بنجاح")
+                }
+                if (Name === '') {
+                    const para = document.createElement("p");
+                    const node = document.createTextNode("username is require");
+                    para.appendChild(node);
+                    const element = document.getElementById("usernameerror");
+                    document.getElementById("usernameerror").style.color = "red"
+                    element.appendChild(para);
+
+                }
+                if (Name != '') {
+
+                }
+                if (Email == "") {
+                    const para = document.createElement("p");
+                    const node = document.createTextNode("email is require");
+                    para.appendChild(node);
+                    const element = document.getElementById("emailerror");
+                    document.getElementById("emailerror").style.color = "red"
+                    element.appendChild(para);
+                }
+                if (Phone == "") {
+                    const para = document.createElement("p");
+                    const node = document.createTextNode("phone is require");
+                    para.appendChild(node);
+                    const element = document.getElementById("phoneerror");
+                    document.getElementById("phoneerror").style.color = "red"
+                    element.appendChild(para);
+                }
+                if (Radio1 == false && Radio2 == false) {
+                    const para = document.createElement("p");
+                    const node = document.createTextNode("radio is require");
+                    para.appendChild(node);
+                    const element = document.getElementById("radioerror");
+                    document.getElementById("radioerror").style.color = "red"
+                    element.appendChild(para);
+
+                }
+                if (Numberroom == true) {
+                    const para = document.createElement("p");
+                    const node = document.createTextNode("Room number is require");
+                    para.appendChild(node);
+                    const element = document.getElementById("numberroomerror");
+                    document.getElementById("numberroomerror").style.color = "red"
+                    element.appendChild(para);
+                }
+                if (roomtype == true) {
+                    const para = document.createElement("p");
+                    const node = document.createTextNode("Room Type is require");
+                    para.appendChild(node);
+                    const element = document.getElementById("roomtypeerror");
+                    document.getElementById("roomtypeerror").style.color = "red"
+                    element.appendChild(para);
+                }
+                if (payment == true) {
+                    const para = document.createElement("p");
+                    const node = document.createTextNode("Payment is require");
+                    para.appendChild(node);
+                    const element = document.getElementById("paymenterror");
+                    document.getElementById("paymenterror").style.color = "red"
+                    element.appendChild(para);
+                }
+                toggle = false;
+            }
+            else {
+                location.reload();
+            }
+
+        }
+
+    </script>
 </body>
+
 
 
 </html>
